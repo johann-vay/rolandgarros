@@ -52,7 +52,7 @@ public class CountryServiceImpl implements CountryService {
 
     @Override
     @Transactional
-    public boolean removeCOuntry(int id) {
+    public boolean removeCountry(int id) {
         return this.countryDao.removeCountry(id);
     }
     

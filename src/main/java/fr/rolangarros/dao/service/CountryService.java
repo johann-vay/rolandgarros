@@ -18,5 +18,5 @@ public interface CountryService {
     public Country updateCountry(Country c);
     public List<Country> listCountries();
     public Country findCountryById(int id);
-    public boolean removeCOuntry(int id);
+    public boolean removeCountry(int id);
 }
