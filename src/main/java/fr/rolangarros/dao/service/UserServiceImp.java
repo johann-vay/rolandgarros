@@ -25,31 +25,31 @@ public class UserServiceImp implements UserService{
     @Override
     @Transactional
     public User addUser(User u) {
-        return this.userDao.addUser(u);
+        return (User) this.userDao.create(u);
     }
 
     @Override
     @Transactional
     public User updateUser(User u) {
-        return this.userDao.updateUser(u);
+        return (User) this.userDao.update(u);
     }
 
     @Override
     @Transactional
     public List<User> listUsers() {
-        return this.userDao.findAll();
+        return this.userDao.findAll(User.class);
     }
 
     @Override
     @Transactional
     public User findUserById(int id) {
-        return this.userDao.findUserById(id);
+        return (User) this.userDao.findById(User.class, id);
     }
 
     @Override
     @Transactional
     public boolean removeUser(int id) {
-        return this.userDao.removeUser(id);
+        return this.userDao.delete(id);
     }
     
 }

@@ -28,4 +28,5 @@ public interface IPlayDoubleDao extends IGenericDao{
     @Override
     List findAll(Class myClass);
     
+    //public boolean delete(int idTeam, int idGame);
 }

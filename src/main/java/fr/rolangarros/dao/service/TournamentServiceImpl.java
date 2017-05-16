@@ -25,31 +25,31 @@ public class TournamentServiceImpl implements TournamentService{
     @Override
     @Transactional
     public Tournament addTournament(Tournament t) {
-        return this.tournamentDao.addTournament(t);
+        return (Tournament) this.tournamentDao.create(t);
     }
 
     @Override
     @Transactional
     public Tournament updateTournament(Tournament t) {
-        return this.tournamentDao.updateTournament(t);
+        return (Tournament) this.tournamentDao.update(t);
     }
 
     @Override
     @Transactional
     public List<Tournament> listTournaments() {
-        return this.tournamentDao.findAll();
+        return this.tournamentDao.findAll(Tournament.class);
     }
 
     @Override
     @Transactional
     public Tournament findTournamentById(int id) {
-        return this.tournamentDao.findTournamentById(id);
+        return (Tournament) this.tournamentDao.findById(Tournament.class, id);
     }
 
     @Override
     @Transactional
     public boolean removeTournament(int id) {
-        return this.tournamentDao.removeTournament(id);
+        return this.tournamentDao.delete(id);
     }
     
 }

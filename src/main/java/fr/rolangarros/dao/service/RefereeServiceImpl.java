@@ -25,31 +25,31 @@ public class RefereeServiceImpl implements RefereeService{
     @Override
     @Transactional
     public Referee addReferee(Referee r) {
-        return this.refereeDao.addReferee(r);
+        return (Referee) this.refereeDao.create(r);
     }
 
     @Override
     @Transactional
     public Referee updateReferee(Referee r) {
-        return this.refereeDao.updateReferee(r);
+        return (Referee) this.refereeDao.update(r);
     }
 
     @Override
     @Transactional
     public List<Referee> listReferees() {
-        return this.refereeDao.findAll();
+        return this.refereeDao.findAll(Referee.class);
     }
 
     @Override
     @Transactional
     public Referee findRefereeById(int id) {
-        return this.refereeDao.findRefereeById(id);
+        return (Referee) this.refereeDao.findById(Referee.class, id);
     }
 
     @Override
     @Transactional
     public boolean removeReferee(int id) {
-        return this.refereeDao.removeReferee(id);
+        return this.refereeDao.delete(id);
     }
     
 }

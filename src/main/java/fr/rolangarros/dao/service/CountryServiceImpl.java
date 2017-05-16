@@ -29,31 +29,31 @@ public class CountryServiceImpl implements CountryService {
     @Override
     @Transactional
     public Country addCountry(Country c) {
-        return this.countryDao.addCountry(c);
+        return (Country) this.countryDao.create(c);
     }
 
     @Override
     @Transactional
     public Country updateCountry(Country c) {
-        return this.countryDao.updateCountry(c);
+        return (Country) this.countryDao.update(c);
     }
 
     @Override
     @Transactional
     public List<Country> listCountries() {
-        return this.countryDao.findall();
+        return this.countryDao.findAll(Country.class);
     }
 
     @Override
     @Transactional
     public Country findCountryById(int id) {
-        return this.countryDao.findCountryById(id);
+        return (Country) this.countryDao.findById(Country.class, id);
     }
 
     @Override
     @Transactional
     public boolean removeCountry(int id) {
-        return this.countryDao.removeCountry(id);
+        return this.countryDao.delete(id);
     }
     
 }

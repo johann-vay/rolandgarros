@@ -6,7 +6,7 @@
 package fr.rolangarros.dao.service;
 
 import fr.rolandgarros.dao.entities.Team;
-import fr.rolandggarros.dao.dao.TeamDao;
+import fr.rolandgarros.dao.dao.TeamDao;
 import java.util.List;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,31 +25,31 @@ public class TeamServiceImpl implements TeamService {
     @Override
     @Transactional
     public Team addTeam(Team t) {
-        return this.teamDao.addTeam(t);
+        return (Team) this.teamDao.create(t);
     }
 
     @Override
     @Transactional
     public Team updateTeam(Team t) {
-        return this.teamDao.updateTeam(t);
+        return (Team) this.teamDao.update(t);
     }
 
     @Override
     @Transactional
     public List<Team> listTeams() {
-        return this.teamDao.findAll();
+        return this.teamDao.findAll(Team.class);
     }
 
     @Override
     @Transactional
     public Team findTeamById(int id) {
-        return this.teamDao.findTeamById(id);
+        return (Team) this.teamDao.findById(Team.class, id);
     }
 
     @Override
     @Transactional
     public boolean removeTeam(int id) {
-        return this.teamDao.removeTeam(id);
+        return this.teamDao.delete(id);
     }
     
 }

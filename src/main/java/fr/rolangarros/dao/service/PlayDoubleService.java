@@ -17,5 +17,5 @@ public interface PlayDoubleService {
     public Playdouble updatePlaydouble(Playdouble p);
     public List<Playdouble> listPlaydouble();
     public Playdouble findPlaydouble(int idTeam, int idGame);
-    public boolean removePlaydouble(int idTeam, int idGame);
+    //public boolean removePlaydouble(int idTeam, int idGame);
 }

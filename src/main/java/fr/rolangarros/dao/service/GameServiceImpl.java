@@ -7,7 +7,7 @@ package fr.rolangarros.dao.service;
 
 
 import fr.rolandgarros.dao.entities.Game;
-import fr.rolandGarros.dao.dao.GameDao;
+import fr.rolandgarros.dao.dao.GameDao;
 import java.util.List;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,30 +27,30 @@ public class GameServiceImpl implements GameService{
     @Override
     @Transactional
     public Game addGame(Game g) {
-        return this.gameDao.addGame(g);
+        return (Game) this.gameDao.create(g);
     }
 
     @Override
     @Transactional
     public Game updateGame(Game g) {
-        return this.gameDao.updateGame(g);
+        return (Game) this.gameDao.update(g);
     }
 
     @Override
     @Transactional
     public List<Game> listGames() {
-        return this.gameDao.findAll();
+        return this.gameDao.findAll(Game.class);
     }
 
     @Override
     @Transactional
     public Game findGameById(int id) {
-        return this.gameDao.findGameById(id);
+        return (Game) this.gameDao.findById(Game.class, id);
     }
 
     @Override
     @Transactional
     public boolean removeGame(int id) {
-        return this.gameDao.removeGame(id);
+        return this.gameDao.delete(id);
     }
 }

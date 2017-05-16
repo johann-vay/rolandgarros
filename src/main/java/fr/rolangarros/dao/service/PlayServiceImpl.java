@@ -25,31 +25,31 @@ public class PlayServiceImpl implements PlayService {
     @Override
     @Transactional
     public Play addPlay(Play p) {
-        return this.playDao.addPlay(p);
+        return (Play) this.playDao.create(p);
     }
 
     @Override
     @Transactional
     public Play updatePlay(Play p) {
-        return this.playDao.updatePlay(p);
+        return (Play) this.playDao.update(p);
     }
 
     @Override
     @Transactional
     public List<Play> listPlay() {
-        return this.playDao.findAll();
+        return this.playDao.findAll(Play.class);
     }
 
     @Override
     @Transactional
     public Play findPlay(int idPlayer, int idGame) {
-        return this.playDao.findPlay(idPlayer, idGame);
+        return (Play) this.playDao.findById(Play.class, idGame);
     }
 
     @Override
     @Transactional
     public boolean removePlay(int idPlayer, int idGame) {
-        return this.playDao.removePlay(idPlayer, idGame);
+        return this.playDao.delete(idGame);
     }
     
 }

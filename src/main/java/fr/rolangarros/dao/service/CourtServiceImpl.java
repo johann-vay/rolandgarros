@@ -25,31 +25,31 @@ public class CourtServiceImpl implements CourtService {
     @Override
     @Transactional
     public Court addCourt(Court c) {
-        return this.courtDao.addCourt(c);
+        return (Court) this.courtDao.create(c);
     }
 
     @Override
     @Transactional
     public Court updateCourt(Court c) {
-        return this.courtDao.updateCourt(c);
+        return (Court) this.courtDao.update(c);
     }
 
     @Override
     @Transactional
     public List<Court> listCourts() {
-        return this.courtDao.findAll();
+        return this.courtDao.findAll(Court.class);
     }
 
     @Override
     @Transactional
     public Court findCourtById(int id) {
-        return this.courtDao.findCourtById(id);
+        return (Court) this.courtDao.findById(Court.class, id);
     }
 
     @Override
     @Transactional
     public boolean removeCourt(int id) {
-        return this.courtDao.removeCourt(id);
+        return this.courtDao.delete(id);
     }
     
 }

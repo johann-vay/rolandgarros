@@ -25,31 +25,31 @@ public class PlayerServiceImpl implements PlayerService {
     @Override
     @Transactional
     public Player addPlayer(Player p) {
-        return this.playerDao.addPlayer(p);
+        return (Player) this.playerDao.create(p);
     }
 
     @Override
     @Transactional
     public Player updatePlayer(Player p) {
-        return this.playerDao.updatePlayer(p);
+        return (Player) this.playerDao.update(p);
     }
 
     @Override
     @Transactional
     public List<Player> listPlayers() {
-        return this.playerDao.findAll();
+        return this.playerDao.findAll(Player.class);
     }
 
     @Override
     @Transactional
     public Player findPlayerById(int id) {
-        return this.playerDao.findPlayerById(id);
+        return (Player) this.playerDao.findById(Player.class, id);
     }
 
     @Override
     @Transactional
     public boolean removePlayer(int id) {
-        return this.playerDao.removePlayer(id);
+        return this.playerDao.delete(id);
     }
     
 }
