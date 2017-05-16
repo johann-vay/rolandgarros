@@ -18,8 +18,8 @@ public class TeamServiceImpl implements TeamService {
 
     private TeamDao teamDao;
     
-    public void setTeamDao(TeamDao teamDao){
-        this.teamDao = teamDao;
+    public void getTeamDao(){
+        this.teamDao = new TeamDao();
     }
     
     @Override

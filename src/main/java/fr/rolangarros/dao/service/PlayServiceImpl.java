@@ -18,8 +18,8 @@ public class PlayServiceImpl implements PlayService {
 
     private PlayDao playDao;
     
-    public void setPlayDao(PlayDao playDao){
-        this.playDao = playDao;
+    public void getPlayDao(){
+        this.playDao = new PlayDao();
     }
     
     @Override

@@ -18,8 +18,8 @@ public class RefereeServiceImpl implements RefereeService{
 
     private RefereeDao refereeDao;
     
-    public void setRefereeDao(RefereeDao refereeDao){
-        this.refereeDao = refereeDao;
+    public void getRefereeDao(){
+        this.refereeDao = new RefereeDao();
     }
     
     @Override
