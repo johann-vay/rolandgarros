@@ -9,6 +9,9 @@ package fr.rolandgarros.dao.dao;
  *
  * @author etudiant
  */
-public class RefereeDao {
+public class RefereeDao extends GenericDao implements IRefereeDao{
+
+    public RefereeDao() {
+    }
     
 }

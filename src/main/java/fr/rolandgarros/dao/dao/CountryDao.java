@@ -9,6 +9,9 @@ package fr.rolandgarros.dao.dao;
  *
  * @author etudiant
  */
-public class CountryDao {
+public class CountryDao extends GenericDao implements ICountryDao {
+
+    public CountryDao() {
+    }
     
 }

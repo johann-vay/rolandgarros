@@ -9,6 +9,9 @@ package fr.rolandgarros.dao.dao;
  *
  * @author etudiant
  */
-public class TeamDao {
+public class TeamDao extends GenericDao implements ITeamDao{
+
+    public TeamDao() {
+    }
     
 }

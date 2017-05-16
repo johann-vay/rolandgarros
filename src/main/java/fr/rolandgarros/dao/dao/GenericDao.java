@@ -6,6 +6,9 @@ package fr.rolandgarros.dao.dao;
  * and open the template in the editor.
  */
 import java.util.List;
+import java.util.Map;
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
@@ -79,4 +82,25 @@ private static final Logger logger = LoggerFactory.getLogger(GenericDao.class);
 		}
 		return list;
     }
+    
+       /* public List findByCriteria(Class myClass, String namedQuery, Map<String, Object> parameters) {
+        List entities = null; //instanciation null de la liste à renvoyer en fin de fonction
+        String methodName = namedQuery;
+
+            if (namedQuery != null && parameters != null && !parameters.isEmpty()) { //si le nom de la requete (défini dans la classe personne en String) non null etc...
+                if (em != null) { // si em non null
+                    Query queryParams = em.createNamedQuery(myClass.getSimpleName() + "." + namedQuery); //
+                    for (Map.Entry<String, Object> entry : parameters.entrySet()) { //
+                        String key = entry.getKey();
+                        Object value = entry.getValue();
+                      queryParams.setParameter(key, value);
+                    }
+                    entities = queryParams.getResultList();
+                    closeEntityManager(em);
+                }
+            }
+        
+
+        return entities;
+    }*/
 }

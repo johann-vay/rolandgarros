@@ -9,6 +9,9 @@ package fr.rolandgarros.dao.dao;
  *
  * @author etudiant
  */
-public class PlayDao{
+public class PlayDao extends GenericDao implements IPlayDao{
+
+    public PlayDao() {
+    }
     
 }

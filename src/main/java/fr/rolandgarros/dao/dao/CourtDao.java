@@ -9,6 +9,9 @@ package fr.rolandgarros.dao.dao;
  *
  * @author etudiant
  */
-public class CourtDao{
+public class CourtDao extends GenericDao implements ICourtDao{
+
+    public CourtDao() {
+    }
     
 }
