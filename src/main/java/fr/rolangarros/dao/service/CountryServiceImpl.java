@@ -41,7 +41,7 @@ public class CountryServiceImpl implements CountryService {
     @Override
     @Transactional
     public List<Country> listCountries() {
-        return this.countryDao.listCountries();
+        return this.countryDao.findall();
     }
 
     @Override
@@ -53,14 +53,7 @@ public class CountryServiceImpl implements CountryService {
     @Override
     @Transactional
     public boolean removeCOuntry(int id) {
-        boolean remove = false;
-        
-        try{
-            this.countryDao.removeCountry(id);
-            remove = true;
-        } catch (Exception e){
-        }
-        return remove;
+        return this.countryDao.removeCountry(id);
     }
     
 }
