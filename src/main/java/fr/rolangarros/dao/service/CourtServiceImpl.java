@@ -18,8 +18,9 @@ public class CourtServiceImpl implements CourtService {
 
     private CourtDao courtDao;
     
-    public void getCourtDao(){
+    public CourtDao getCourtDao(){
         this.courtDao = new CourtDao();
+        return this.courtDao;
     }
     
     @Override

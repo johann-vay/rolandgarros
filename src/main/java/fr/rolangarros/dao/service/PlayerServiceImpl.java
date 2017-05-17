@@ -18,8 +18,9 @@ public class PlayerServiceImpl implements PlayerService {
 
     private PlayerDao playerDao;
     
-    public void getPlayerDao(){
+    public PlayerDao getPlayerDao(){
         this.playerDao = new PlayerDao();
+        return this.playerDao;
     }
     
     @Override

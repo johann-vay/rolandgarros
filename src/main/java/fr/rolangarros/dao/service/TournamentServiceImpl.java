@@ -18,8 +18,9 @@ public class TournamentServiceImpl implements TournamentService{
 
     private TournamentDao tournamentDao;
     
-    public void getTournamentDao(){
+    public TournamentDao getTournamentDao(){
         this.tournamentDao = new TournamentDao();
+        return this.tournamentDao;
     }
     
     @Override
