@@ -4,6 +4,16 @@
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
         <jta-data-source>rolandgarros</jta-data-source>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <class>fr.rolandgarros.dao.entities.Country</class>
+        <class>fr.rolandgarros.dao.entities.Court</class>
+        <class>fr.rolandgarros.dao.entities.Game</class>
+        <class>fr.rolandgarros.dao.entities.Play</class>
+        <class>fr.rolandgarros.dao.entities.Playdouble</class>
+        <class>fr.rolandgarros.dao.entities.Player</class>
+        <class>fr.rolandgarros.dao.entities.Referee</class>
+        <class>fr.rolandgarros.dao.entities.Team</class>
+        <class>fr.rolandgarros.dao.entities.Tournament</class>
+        <class>fr.rolandgarros.dao.entities.User</class>
         <properties>
             <property name="javax.persistence.schema-generation.database.action" value="create"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/rolandgarros"/>

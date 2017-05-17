@@ -20,7 +20,7 @@ public interface ITeamDao  extends IGenericDao{
     Object update(Object obj);
 
     @Override
-    boolean delete(int Id);
+    boolean delete(Object obj);
 
     @Override
     Object findById(Class myClass, Integer id);

@@ -18,7 +18,7 @@ public interface IGenericDao {
 
     Object update(Object obj);
 
-    boolean delete(int Id);
+    boolean delete(Object obj);
 
     Object findById(Class myClass, Integer id);
 
