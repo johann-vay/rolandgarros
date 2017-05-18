@@ -21,8 +21,9 @@ public class CountryServiceImpl implements CountryService {
 
     private CountryDao countryDao;
     
-    public void getCountryDao(){
+    public CountryDao getCountryDao(){
         this.countryDao = new CountryDao();
+        return this.countryDao;
     }
     
     

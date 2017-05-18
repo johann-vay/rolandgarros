@@ -19,8 +19,9 @@ public class GameServiceImpl implements GameService{
 
     private GameDao gameDao;
     
-    public void getGameDao(){
+    public GameDao getGameDao(){
         this.gameDao = new GameDao();
+        return this.gameDao;
     }
     
     

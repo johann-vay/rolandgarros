@@ -18,8 +18,9 @@ public class PlayDoubleServiceImpl implements PlayDoubleService {
 
     private PlayDoubleDao playdoubleDao;
     
-    public void getPlaydoubleDao(){
+    public PlayDoubleDao getPlaydoubleDao(){
         this.playdoubleDao = new PlayDoubleDao();
+        return this.playdoubleDao;
     }
     
     @Override

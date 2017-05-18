@@ -96,13 +96,20 @@ public class Player implements Serializable {
         this.idPlayer = idPlayer;
     }
 
-    public Player(Integer idPlayer, String firstname, String name, Character gender, Date birthday, int version) {
+    public Player(Integer idPlayer, String firstname, String name, Character gender, Date birthday, Country country) {
         this.idPlayer = idPlayer;
         this.firstname = firstname;
         this.name = name;
         this.gender = gender;
         this.birthday = birthday;
-        this.version = version;
+        this.idCountry = country;
+    }
+    public Player(String firstname, String name, Character gender, Date birthday, Country country) {
+        this.firstname = firstname;
+        this.name = name;
+        this.gender = gender;
+        this.birthday = birthday;
+        this.idCountry = country;
     }
 
     public Integer getIdPlayer() {

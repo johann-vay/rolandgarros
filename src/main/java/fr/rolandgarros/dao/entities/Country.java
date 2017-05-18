@@ -66,10 +66,13 @@ public class Country implements Serializable {
         this.idCountry = idCountry;
     }
 
-    public Country(Integer idCountry, String label, int version) {
+    public Country(Integer idCountry, String label) {
         this.idCountry = idCountry;
         this.label = label;
-        this.version = version;
+    }
+    
+    public Country(String label) {
+        this.label = label;
     }
 
     public Integer getIdCountry() {
@@ -136,7 +139,7 @@ public class Country implements Serializable {
 
     @Override
     public String toString() {
-        return "fr.rolandgarros.dao.entities.Country[ idCountry=" + idCountry + " ]";
+        return "Country[ idCountry=" + idCountry + ", label= "+label+"]";
     }
     
 }

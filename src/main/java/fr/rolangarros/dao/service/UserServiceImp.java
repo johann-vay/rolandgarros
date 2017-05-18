@@ -18,8 +18,9 @@ public class UserServiceImp implements UserService{
 
     private UserDao userDao;
     
-    public void getUserDao(){
+    public UserDao getUserDao(){
         this.userDao = new UserDao();
+        return this.userDao;
     }
     
     @Override
