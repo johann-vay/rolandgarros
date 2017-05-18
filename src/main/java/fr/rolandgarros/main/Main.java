@@ -12,6 +12,7 @@ import fr.rolangarros.dao.service.CountryServiceImpl;
 import java.util.List;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import utils.Constants;
 
 /**
  *
@@ -23,14 +24,13 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        ApplicationContext ctx = new ClassPathXmlApplicationContext("file:src/main/java/spring-dao-config.xml");
-        CountryServiceImpl countryService = new CountryServiceImpl();
-        CountryDao countryDao = countryService.getCountryDao();
+
+        ICountryDao countryDao = (ICountryDao) Constants.ctx.getBean("countryDao");
         List<Country> countries = countryDao.findAll(Country.class);
-        Country country = new Country("Test label");
-        country = (Country) countryDao.create(country);
+        /*Country country = new Country("Test label");
+        country = (Country) countryDao.create(country);*/
         System.out.print(countries);
-        System.out.println(country);
+        //System.out.println(country);
         
         //testSpringHibernate();
     }

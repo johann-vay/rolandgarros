@@ -23,7 +23,7 @@ public interface ICourtDao extends IGenericDao{
     boolean delete(Object obj);
 
     @Override
-    Object findById(Class myClass, Integer id);
+    Object findById(Class myClass, int id);
 
     @Override
     List findAll(Class myClass);

@@ -7,6 +7,7 @@ package fr.rolandgarros.dao.test;
 
 import com.ibatis.common.jdbc.ScriptRunner;
 import fr.rolandgarros.dao.dao.CountryDao;
+import fr.rolandgarros.dao.dao.ICountryDao;
 import fr.rolandgarros.dao.dao.PlayerDao;
 import fr.rolandgarros.dao.entities.Country;
 import fr.rolandgarros.dao.entities.Player;
@@ -27,7 +28,9 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import utils.Constants;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import utils.Constants; 
 
 /**
  *
@@ -49,9 +52,9 @@ public class JUnitCountryDao {
         String methodName = "init";
         System.out.println("======================= " + className + " --> " + methodName + " ==========================");
         //initDataBase();
-        CountryServiceImpl countryService = new CountryServiceImpl();
-        CountryDao countryDao = countryService.getCountryDao();
-        //countries = countryDao.findAll(Country.class);
+
+        ICountryDao countryDao = (ICountryDao) Constants.ctx.getBean("countryDao");
+        countries = countryDao.findAll(Country.class);
     }
 
     /*@BeforeClass
@@ -95,7 +98,7 @@ public class JUnitCountryDao {
         }
     }*/
 
-   /* @Test
+    @Test
     public void testFindAllCountries() {
         String methodName = "testFindAllCountries";
         System.out.println("======================= " + className + " --> " + methodName + " ==========================");
@@ -103,7 +106,7 @@ public class JUnitCountryDao {
             System.out.println(className + " --> " + methodName + " , NB_COUNTRIES_LIST: " + NB_COUNTRIES_LIST + " , personnes.size(): " + countries.size());
             Assert.assertEquals(NB_COUNTRIES_LIST, countries.size());
         }
-    }*/
+    }
 
     /*@Test
     public void testFindByCriteria() {
@@ -163,11 +166,10 @@ public class JUnitCountryDao {
         Country countryCRUD = new Country();
         countryCRUD.setLabel("Test label");
         
-        CountryServiceImpl csi = new CountryServiceImpl();
-        CountryDao countryDao = csi.getCountryDao();
-        System.out.println(countryCRUD);
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("file:src/main/java/spring-dao-config.xml");
+
+        ICountryDao countryDao = (ICountryDao) ctx.getBean("countryDao");
         countryCRUD = (Country) countryDao.create(countryCRUD);
-        System.out.println(countryCRUD);
         NB_COUNTRIES_LIST++;
         Assert.assertNotNull(countryCRUD);
         System.out.println("Created countryCRUD : " + countryCRUD);
@@ -178,7 +180,7 @@ public class JUnitCountryDao {
         countryCRUD = (Country) countryDao.findById(Country.class, countryCRUD.getIdCountry());
         System.out.println("Updated countryCRUD : " + countryCRUD);
         Assert.assertEquals("Test bis", countryCRUD.getLabel());
-        Assert.assertTrue(countryDao.delete(countryCRUD.getIdCountry()));
+        Assert.assertTrue(countryDao.delete(countryCRUD));
         NB_COUNTRIES_LIST--;
         List<Country> countriesTest = countryDao.findAll(Country.class);
         if (countriesTest != null) {

@@ -12,11 +12,14 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
  * @author ElHadji
  */
+
+@Transactional
 public abstract class GenericDao implements IGenericDao {
 
     @PersistenceContext
@@ -45,7 +48,7 @@ public abstract class GenericDao implements IGenericDao {
     }
 
     @Override
-    public Object findById(Class myClass, Integer id) {
+    public Object findById(Class myClass, int id) {
         return em.find(myClass, id);
     }
 

@@ -5,6 +5,9 @@
  */
 package utils;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 /**
  *
  * @author Johann
@@ -22,4 +25,6 @@ public class Constants {
 
     // Drivers Jdbc
     public static String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+    
+    public static ApplicationContext ctx = new ClassPathXmlApplicationContext("file:src/main/java/spring-dao-config.xml");
 }
