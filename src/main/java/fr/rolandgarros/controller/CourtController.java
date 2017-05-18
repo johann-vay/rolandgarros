@@ -30,7 +30,7 @@ public class CourtController {
 	}
 	
 	@RequestMapping(value = "/courts", method = RequestMethod.GET)
-	public String listCountries(Model model) {
+	public String listCourts(Model model) {
 		model.addAttribute("court", new Court());
 		model.addAttribute("listCourts", this.courtService.listCourts());
 		return "court";

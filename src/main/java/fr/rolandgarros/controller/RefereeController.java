@@ -30,7 +30,7 @@ public class RefereeController {
 	}
 	
 	@RequestMapping(value = "/referees", method = RequestMethod.GET)
-	public String listCountries(Model model) {
+	public String listReferees(Model model) {
 		model.addAttribute("referee", new Referee());
 		model.addAttribute("listReferees", this.refereeService.listReferees());
 		return "referee";

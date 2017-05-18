@@ -30,7 +30,7 @@ public class TeamController {
 	}
 	
 	@RequestMapping(value = "/teams", method = RequestMethod.GET)
-	public String listCountries(Model model) {
+	public String listTeams(Model model) {
 		model.addAttribute("team", new Team());
 		model.addAttribute("listTeams", this.teamService.listTeams());
 		return "team";

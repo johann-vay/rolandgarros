@@ -30,7 +30,7 @@ public class TournamentController {
 	}
 	
 	@RequestMapping(value = "/tournaments", method = RequestMethod.GET)
-	public String listCountries(Model model) {
+	public String listTournaments(Model model) {
 		model.addAttribute("tournament", new Tournament());
 		model.addAttribute("listTournaments", this.tournamentService.listTournaments());
 		return "tournament";

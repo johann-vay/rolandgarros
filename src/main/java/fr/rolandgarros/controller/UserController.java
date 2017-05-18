@@ -30,7 +30,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/users", method = RequestMethod.GET)
-	public String listCountries(Model model) {
+	public String listUsers(Model model) {
 		model.addAttribute("user", new User());
 		model.addAttribute("listUsers", this.userService.listUsers());
 		return "user";

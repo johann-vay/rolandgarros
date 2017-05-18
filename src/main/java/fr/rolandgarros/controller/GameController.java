@@ -30,7 +30,7 @@ public class GameController {
 	}
 	
 	@RequestMapping(value = "/games", method = RequestMethod.GET)
-	public String listCountries(Model model) {
+	public String listGames(Model model) {
 		model.addAttribute("game", new Game());
 		model.addAttribute("listGames", this.gameService.listGames());
 		return "game";
