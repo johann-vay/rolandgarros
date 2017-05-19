@@ -1,10 +1,82 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Start Page</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    </head>
-    <body>
-        <h1>Hello World!</h1>
-    </body>
-</html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Roland GARROS</title>
+    <link rel="stylesheet" type="text/css" href="./CSS/style.css" />
+    <link rel="icon" href="./Image/favicon.ico" />
+</head>
+
+<body>
+  <header>
+    <nav class="topnav" id="myTopnav">
+            <img class="logoNavBar" src="./Image/Rollandgarros.png" alt="logo roland garros">
+            <a class="active" href="Index.html">Home</a>
+            <a href="contact.html">Contact</a>
+            <a class="connect" id="connexion" href="#id01">Connexion</a>
+            <a class="deconnect" href="formdeconnexion.html">Déconnexion</a>
+            <a class="icon" id="clic">&#9776;</a>
+    </nav>
+  </header>
+
+  <div id="id01" class="loginArrierePlan">
+    <span class="close" title="Close Modal">&times;</span>
+    <div class = "login">
+  <h2 class="styletitre">Connexion</h2>
+  <div class="imgcontainer">
+    <img src="./Image/Imageavatar.png" alt="Avatar" class="avatar">
+  </div>
+  <p>Veuillez entrez votre identifiant et votre mot de passe :</p>
+    <form action="" method="post">
+      <input class="field" type="text" placeholder="Identifiant" id="username">
+      <input class="field" type="password" placeholder="Mot de passe" id="password">
+      <input class="chbox" type="checkbox" name = "option" value="Remember">Rester connecté<br/>
+      <div class = "espaceBoutons">
+      <button class="btn2" type="submit">Connexion</button>
+      <button class="btn2" type="button" id="boutonAnnuler">Annuler</button>
+    </div>
+    </form>
+  </div>
+  </div>
+    <ul>
+        <div class="conteneur1">
+            <li>
+                <a class="logo" id="joueur" href="enregistrerUnJoueur.html">
+                    <img src="./Image/joueurTennis.png" alt="Image"/>
+                    <div>Liste des joueurs</div>
+                </a>
+            </li>
+            <li>
+                <a class="logo" id="arbitre" href="enregistrerUnArbitre.html">
+                    <img src="./Image/arbitre.png" alt="Image" class="arrondiimg" />
+                    <div>Liste des arbitres</div>
+                </a>
+            </li>
+            <li>
+                <a class="logo" id="courts" href="enregistrerUnCourt.html">
+                    <img src="./Image/courtRollandGarros.jpg" alt="Image" class="arrondiimg" />
+                    <div>Liste des courts</div>
+                </a>
+            </li>
+          </div>
+          <div class="conteneur2">
+            <li>
+                <a class="logo" id="match" href="planifierUnMatch.html">
+                    <img src="./Image/planifierMatch.png" alt="Image" class="arrondiimg"/>
+                    <div>Planning des matchs</div>
+                </a>
+            </li>
+            <li>
+                <a class="logo" id="resultat" href="enregistrerUnResultat">
+                    <img src="./Image/resultats.png" alt="Image" class="arrondiimg" />
+                    <div>Liste des résultats</div>
+                </a>
+            </li>
+
+        </div>
+    </ul>
+
+    <footer> <em>Copyright © 2017 All rights reserved.</em></footer>
+    <script src="./Javascript/javascript.js"></script>
+</body>

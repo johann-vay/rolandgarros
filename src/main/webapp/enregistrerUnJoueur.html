@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Roland GARROS</title>
+    <link rel="stylesheet" type="text/css" href="./CSS/style.css" />
+    <link rel="icon" href="./Image/favicon.ico" />
+</head>
+
+<body>
+  <header>
+    <nav class="topnav" id="myTopnav">
+            <img class="logoNavBar" src="./Image/Rollandgarros.png" alt="logo roland garros">
+            <a class="active" href="Index.html">Home</a>
+            <a href="contact.html">Contact</a>
+            <a class="logo" id="arbitre" href="enregistrerUnArbitre.html">Liste arbitres</a>
+            <a class="logo" id="courts" href="enregistrerUnCourt.html">Liste courts</a>
+            <a class="logo" id="match" href="planifierUnMatch.html">Planning matchs</a>
+            <a class="logo" id="resultat" href="enregistrerUnResultat">Liste résultats</a>
+            <a class="connect" id="connexion" href="#id01">Connexion</a>
+            <a class="deconnect" href="formdeconnexion.html">Déconnexion</a>
+            <a class="icon" id="clic">&#9776;</a>
+    </nav>
+  </header>
+
+<h1 class="styletitre">Enregistrement d'un joueur</h1>
+  <div class="login">
+    <form action="" method="post">
+            <h2 class="styletitre">Informations Générales</h2>
+                <label for="nom" class=textformulaire>
+                  Nom
+                </label>
+                <input class="field2" type="text" placeholder="Nom" id="nom" required="">
+
+                <label for="prenom" class="textformulaire">
+                  Prénom
+                </label>
+                <input class="field2" placeholder="Prénom" type="text" name="user_first_name" id="prenom" required="" />
+
+                <label for="datenaissance" class="textformulaire">
+                  Date de naissance
+                </label>
+                <input type="date" class = "field2" name="datenaissance" id="datenaissance" required=""/>
+
+                <label for="selectionSexe" class="textformulaire">
+                  Sexe
+                </label>
+                <select name="selectionSexe" class = "field3" id="selectionSexe" required="">
+                  <option value=1>
+                    Femme
+                  </option>
+                  <option value=2>
+                    Homme
+                  </option>
+                </select>
+                <label for="selectionNation" class="textformulaire">
+                  Nation
+                </label>
+                <select name="selectionNation" class = "field3" id="selectionNation" required="">
+                  <option value=1>
+                  </option>
+                </select>
+                <div class = "espaceBoutons">
+                <button class="btn2" type="submit">
+                  Enregistrer
+                </button>
+                <button class="btn2" type="reset">
+                  Annuler
+                </button>
+                </div>
+              </form>
+            </div>
+      <footer> <em>Copyright © 2017 All rights reserved.</em></footer>
+      <script src="./Javascript/javascript.js"></script>
+</body>

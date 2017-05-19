@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Roland GARROS</title>
+    <link rel="stylesheet" type="text/css" href="./CSS/style.css" />
+    <link rel="icon" href="./Image/favicon.ico" />
+</head>
+
+<body>
+  <header>
+    <nav class="topnav" id="myTopnav">
+      <img class="logoNavBar" src="./Image/Rollandgarros.png" alt="logo roland garros">
+      <a class="active" href="Index.html">Home</a>
+      <a href="contact.html">Contact</a>
+      <a class="logo" id="joueur" href="enregistrerUnJoueur.html">Liste joueurs</a>
+      <a class="logo" id="arbitre" href="enregistrerUnArbitre.html">Liste arbitres</a>
+      <a class="logo" id="courts" href="enregistrerUnCourt.html">Liste courts</a>
+      <a class="logo" id="resultat" href="enregistrerUnResultat">Liste résultats</a>
+      <a class="connect" id="connexion" href="#id01">Connexion</a>
+      <a class="deconnect" href="formdeconnexion.html">Déconnexion</a>
+      <a class="icon" id="clic">&#9776;</a>
+    </nav>
+  </header>
+
+<h1 class="styletitre">Enregistrer des matchs</h1>
+  <div class="login">
+    <form action="" method="post">
+            <h2 class="styletitre">Planification du match</h2>
+            <label for="selectionTournoi" class="textformulaire">
+              Tournoi
+            </label>
+                <select name="selectionTournoi" class = "field3" id="selectionTournoi" required="">
+                  <option value=1>
+                  </option>
+                </select>
+                <label for="selectionJoueur1" class="textformulaire">
+                  Joueur 1
+                </label>
+                <select name="selectionJoueur1" class = "field3" id="selectionJoueur1" required="">
+                  <option value=1>
+                  </option>
+                </select>
+                <label for="selectionJoueur2" class="textformulaire">
+                  Joueur 2
+                </label>
+                <select name="selectionJoueur2" class = "field3" id="selectionJoueur2" required="">
+                  <option value=1>
+                  </option>
+                </select>
+                <label for="selectionArbitre" class="textformulaire">
+                  Arbitre
+                </label>
+                <select name="selectionArbitre" class = "field3" id="selectionArbitre" required="">
+                  <option value=1>
+                  </option>
+                </select>
+                <label for="selectionCourt" class="textformulaire">
+                  Court
+                </label>
+                <select name="selectionCourt" class = "field3" id="selectionCourt" required="">
+                  <option value=1>
+                  </option>
+                </select>
+                <label for="dateMatch" class=textformulaire>
+                  Date du match
+                </label>
+                <input type="date" class = "field2" name="dateMatch" id="dateMatch" required=""/>
+
+                <label for="heureMatch" class=textformulaire>
+                  Heure début du match
+                </label>
+                <input type="time" class = "field2" name="heureMatch" id="heureMatch" required=""/>
+
+                <div class = "espaceBoutons">
+                <button class="btn2" type="submit">
+                  Enregistrer
+                </button>
+                <button class="btn2" type="reset">
+                  Annuler
+                </button>
+                </div>
+              </form>
+            </div>
+      <footer> <em>Copyright © 2017 All rights reserved.</em></footer>
+      <script src="./Javascript/javascript.js"></script>
+</body>
