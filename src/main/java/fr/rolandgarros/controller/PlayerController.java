@@ -5,6 +5,7 @@
  */
 package fr.rolandgarros.controller;
 
+import fr.rolandgarros.dao.dao.IPlayerDao;
 import fr.rolandgarros.dao.entities.Player;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -16,53 +17,52 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 
-import fr.rolangarros.dao.service.PlayerService;
+import utils.Constants;
 
 @Controller
 public class PlayerController {
 	
-	private PlayerService playerService;
+	private IPlayerDao playerDao;
 	
 	@Autowired(required=true)
-	@Qualifier(value="playerService")
-	public void setplayerService(PlayerService cs){
-		this.playerService = cs;
+	@Qualifier(value="playerDao")
+	public void setplayerDao(){
+		this.playerDao = (IPlayerDao) Constants.ctx.getBean("playerDao");
 	}
 	
 	@RequestMapping(value = "/players", method = RequestMethod.GET)
 	public String listPlayers(Model model) {
-		model.addAttribute("player", new Player());
-		model.addAttribute("listPlayers", this.playerService.listPlayers());
+		model.addAttribute("listPlayers", this.playerDao.findAll(Player.class));
 		return "player";
 	}
 	
-	//For add and update person both
+	//For add and update player both
 	@RequestMapping(value= "/player/add", method = RequestMethod.POST)
 	public String addPlayer(@ModelAttribute("player") Player c){
 		
 		if(c.getIdPlayer() == 0){
-			//new player, add it
-			this.playerService.addPlayer(c);
+			//new Player, add it
+			this.playerDao.create(Player.class);
 		}else{
-			//existing player, call update
-			this.playerService.updatePlayer(c);
+			//existing Player, call update
+			this.playerDao.update(Player.class);
 		}
 		
-		return "redirect:/player"; //page jsp 
+		return "redirect:/players"; //page jsp 
 		
 	}
 	
 	@RequestMapping("/remove/{id}")
     public String removePlayer(@PathVariable("id") int id){
-		
-        this.playerService.removePlayer(id);
+	Player player = (Player) this.playerDao.findById(Player.class, id);
+        this.playerDao.delete(player);
         return "redirect:/players"; //page jsp 
     }
  
     @RequestMapping("/edit/{id}")
     public String editPlayer(@PathVariable("id") int id, Model model){
-        model.addAttribute("player", this.playerService.findPlayerById(id));
-        model.addAttribute("listPlayers", this.playerService.listPlayers());
+        model.addAttribute("players", this.playerDao.findById(Player.class, id));
+        model.addAttribute("listPlayers", this.playerDao.findAll(Player.class));
         return "player";
     }
 	

@@ -5,6 +5,7 @@
  */
 package fr.rolandgarros.controller;
 
+import fr.rolandgarros.dao.dao.ITournamentDao;
 import fr.rolandgarros.dao.entities.Tournament;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -17,35 +18,36 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 
 import fr.rolangarros.dao.service.TournamentService;
+import utils.Constants;
 
 @Controller
 public class TournamentController {
 	
-	private TournamentService tournamentService;
+	private ITournamentDao tournamentDao;
 	
 	@Autowired(required=true)
 	@Qualifier(value="tournamentService")
 	public void settournamentService(TournamentService cs){
-		this.tournamentService = cs;
+		this.tournamentDao = (ITournamentDao) Constants.ctx.getBean("tournamentDao");
 	}
 	
 	@RequestMapping(value = "/tournaments", method = RequestMethod.GET)
 	public String listTournaments(Model model) {
 		model.addAttribute("tournament", new Tournament());
-		model.addAttribute("listTournaments", this.tournamentService.listTournaments());
+		model.addAttribute("listTournaments", this.tournamentDao.findAll(Tournament.class));
 		return "tournament";
 	}
 	
-	//For add and update person both
+	//For add and update tournament both
 	@RequestMapping(value= "/tournament/add", method = RequestMethod.POST)
 	public String addTournament(@ModelAttribute("tournament") Tournament c){
 		
 		if(c.getIdTournament() == 0){
 			//new tournament, add it
-			this.tournamentService.addTournament(c);
+			this.tournamentDao.create(Tournament.class);
 		}else{
 			//existing tournament, call update
-			this.tournamentService.updateTournament(c);
+			this.tournamentDao.update(Tournament.class);
 		}
 		
 		return "redirect:/tournament"; //page jsp 
@@ -54,15 +56,15 @@ public class TournamentController {
 	
 	@RequestMapping("/remove/{id}")
     public String removeTournament(@PathVariable("id") int id){
-		
-        this.tournamentService.removeTournament(id);
+	Tournament tournament = (Tournament) tournamentDao.findById(Tournament.class, id);
+        this.tournamentDao.delete(tournament);
         return "redirect:/tournaments"; //page jsp 
     }
  
     @RequestMapping("/edit/{id}")
     public String editTournament(@PathVariable("id") int id, Model model){
-        model.addAttribute("tournament", this.tournamentService.findTournamentById(id));
-        model.addAttribute("listTournaments", this.tournamentService.listTournaments());
+        model.addAttribute("tournament", this.tournamentDao.findById(Tournament.class,id));
+        model.addAttribute("listTournaments", this.tournamentDao.findAll(Tournament.class));
         return "tournament";
     }
 	

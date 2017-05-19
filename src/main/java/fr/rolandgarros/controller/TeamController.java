@@ -5,6 +5,7 @@
  */
 package fr.rolandgarros.controller;
 
+import fr.rolandgarros.dao.dao.ITeamDao;
 import fr.rolandgarros.dao.entities.Team;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -17,35 +18,36 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 
 import fr.rolangarros.dao.service.TeamService;
+import utils.Constants;
 
 @Controller
 public class TeamController {
 	
-	private TeamService teamService;
+	private ITeamDao teamDao;
 	
 	@Autowired(required=true)
 	@Qualifier(value="teamService")
 	public void setteamService(TeamService cs){
-		this.teamService = cs;
+		this.teamDao = (ITeamDao) Constants.ctx.getBean("teamDao");
 	}
 	
 	@RequestMapping(value = "/teams", method = RequestMethod.GET)
 	public String listTeams(Model model) {
 		model.addAttribute("team", new Team());
-		model.addAttribute("listTeams", this.teamService.listTeams());
+		model.addAttribute("listTeams", this.teamDao.findAll(Team.class));
 		return "team";
 	}
 	
-	//For add and update person both
+	//For add and update team both
 	@RequestMapping(value= "/team/add", method = RequestMethod.POST)
 	public String addTeam(@ModelAttribute("team") Team c){
 		
 		if(c.getIdTeam() == 0){
 			//new team, add it
-			this.teamService.addTeam(c);
+			this.teamDao.create(Team.class);
 		}else{
 			//existing team, call update
-			this.teamService.updateTeam(c);
+			this.teamDao.update(Team.class);
 		}
 		
 		return "redirect:/team"; //page jsp 
@@ -54,15 +56,15 @@ public class TeamController {
 	
 	@RequestMapping("/remove/{id}")
     public String removeTeam(@PathVariable("id") int id){
-		
-        this.teamService.removeTeam(id);
+	Team team = (Team) teamDao.findById(Team.class, id);
+        this.teamDao.delete(team);
         return "redirect:/teams"; //page jsp 
     }
  
     @RequestMapping("/edit/{id}")
     public String editTeam(@PathVariable("id") int id, Model model){
-        model.addAttribute("team", this.teamService.findTeamById(id));
-        model.addAttribute("listTeams", this.teamService.listTeams());
+        model.addAttribute("team", this.teamDao.findById(Team.class,id));
+        model.addAttribute("listTeams", this.teamDao.findAll(Team.class));
         return "team";
     }
 	

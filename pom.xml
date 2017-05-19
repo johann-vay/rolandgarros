@@ -17,6 +17,8 @@
         <spring.version>4.1.4.RELEASE</spring.version>
         <hibernate.version>4.0.1.Final</hibernate.version>
         <mysql.version>5.1.10</mysql.version>
+        <jersey.version>2.12</jersey.version>
+		<jersey.scope>compile</jersey.scope>
     </properties>
     
     <dependencies>
@@ -93,7 +95,12 @@
             <artifactId>el-impl</artifactId>
             <version>2.2</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.glassfish.jersey.containers</groupId>
+            <artifactId>jersey-container-servlet-core</artifactId>
+            <version>${jersey.version}</version>
+            <scope>${jersey.scope}</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -118,32 +125,33 @@
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <version>2.6</version>
-                <executions>
-                    <execution>
-                        <phase>validate</phase>
-                        <goals>
-                            <goal>copy</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${endorsed.dir}</outputDirectory>
-                            <silent>true</silent>
-                            <artifactItems>
-                                <artifactItem>
-                                    <groupId>javax</groupId>
-                                    <artifactId>javaee-endorsed-api</artifactId>
-                                    <version>7.0</version>
-                                    <type>jar</type>
-                                </artifactItem>
-                            </artifactItems>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+<!--             <plugin> -->
+<!--                 <groupId>org.apache.maven.plugins</groupId> -->
+<!--                 <artifactId>maven-dependency-plugin</artifactId> -->
+<!--                 <version>2.6</version> -->
+<!--                 <executions> -->
+<!--                     <execution> -->
+<!--                         <phase>validate</phase> -->
+<!--                         <goals> -->
+<!--                             <goal>copy</goal> -->
+<!--                         </goals> -->
+<!--                         <configuration> -->
+<!--                             <outputDirectory>${endorsed.dir}</outputDirectory> -->
+<!--                             <silent>true</silent> -->
+<!--                             <artifactItems> -->
+<!--                                 <artifactItem> -->
+<!--                                     <groupId>javax</groupId> -->
+<!--                                     <artifactId>javaee-endorsed-api</artifactId> -->
+<!--                                     <version>7.0</version> -->
+<!--                                     <type>jar</type> -->
+<!--                                 </artifactItem> -->
+<!--                             </artifactItems> -->
+<!--                         </configuration> -->
+<!--                     </execution> -->
+<!--                 </executions> -->
+<!--             </plugin> -->
         </plugins>
+        <finalName>${project.artifactId}</finalName>
     </build>
     <repositories>
         <repository>

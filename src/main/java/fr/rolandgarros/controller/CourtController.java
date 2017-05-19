@@ -5,6 +5,7 @@
  */
 package fr.rolandgarros.controller;
 
+import fr.rolandgarros.dao.dao.ICourtDao;
 import fr.rolandgarros.dao.entities.Court;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -17,35 +18,36 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 
 import fr.rolangarros.dao.service.CourtService;
+import utils.Constants;
 
 @Controller
 public class CourtController {
 	
-	private CourtService courtService;
+	private ICourtDao courtDao;
 	
 	@Autowired(required=true)
 	@Qualifier(value="courtService")
 	public void setcourtService(CourtService cs){
-		this.courtService = cs;
+		this.courtDao = (ICourtDao) Constants.ctx.getBean("courtDao");
 	}
 	
 	@RequestMapping(value = "/courts", method = RequestMethod.GET)
 	public String listCourts(Model model) {
 		model.addAttribute("court", new Court());
-		model.addAttribute("listCourts", this.courtService.listCourts());
+		model.addAttribute("listCourts", this.courtDao.findAll(Court.class));
 		return "court";
 	}
 	
-	//For add and update person both
+	//For add and update court both
 	@RequestMapping(value= "/court/add", method = RequestMethod.POST)
 	public String addCourt(@ModelAttribute("court") Court c){
 		
 		if(c.getIdCourt() == 0){
 			//new court, add it
-			this.courtService.addCourt(c);
+			this.courtDao.create(Court.class);
 		}else{
 			//existing court, call update
-			this.courtService.updateCourt(c);
+			this.courtDao.update(Court.class);
 		}
 		
 		return "redirect:/court"; //page jsp 
@@ -54,15 +56,15 @@ public class CourtController {
 	
 	@RequestMapping("/remove/{id}")
     public String removeCourt(@PathVariable("id") int id){
-		
-        this.courtService.removeCourt(id);
+	Court court = (Court) courtDao.findById(Court.class, id);
+        this.courtDao.delete(court);
         return "redirect:/courts"; //page jsp 
     }
  
     @RequestMapping("/edit/{id}")
     public String editCourt(@PathVariable("id") int id, Model model){
-        model.addAttribute("court", this.courtService.findCourtById(id));
-        model.addAttribute("listCourts", this.courtService.listCourts());
+        model.addAttribute("court", this.courtDao.findById(Court.class,id));
+        model.addAttribute("listCourts", this.courtDao.findAll(Court.class));
         return "court";
     }
 	
